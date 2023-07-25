@@ -7,56 +7,61 @@ class room:
 
 A = room()
 B = room()
-cost = 0
-count = 2
 A.dirty = input("Is room A dirty? Enter True/False: ").lower()=="true"
 B.dirty = input("Is room B dirty? Enter True/False: ").lower()=="true"
 vaccumpos= input("Is vaccum cleaner present in room A or B :")
 
-if not A.dirty and not B.dirty:
-    print("Both rooms are already clean Total cost = 0")
+if  A.dirty and  B.dirty and vaccumpos == "A":
+    A.suck()
+    print("cleaning room A")
+    print("vaccum cleaner moving to room B")
+    vaccumpos = "B"
+    B.suck()
+    print("cleaning room B")
+    print("All rooms cleaned")
     sys.exit()
-print("vaccum cleaner present in room ",vaccumpos)
-while count>0:
-    if vaccumpos == "A" and A.dirty:
-        A.suck()
-        print("cleaning room A")
-        cost +=1
-        count -=1
-    if vaccumpos == "A" and B.dirty:
-         print("vaccum cleaner moving to room B")
-         vaccumpos = "B"
-         B.suck()
-         print("cleaning room B")
-        elif vaccumpos =="B" and A.dirty:
-            print("Vaccum cleaner moving to room A")
-           cost +=1
-           vaccumpos = "A"
-        
-        
-           
-    if vaccumpos == "B" and B.dirty:
-        B.suck()
-        print("cleaning room B")
-        cost +=1
-        count -=1
-        if vaccumpos =="B" and A.dirty:
-           print("Vaccum cleaner moving to room A")
-           cost +=1
-           vaccumpos = "A"
-           
-print("Both rooms cleaned")
-print("Total cost = ",cost)
+
+if  A.dirty and  B.dirty and vaccumpos == "B":
+    B.suck()
+    print("cleaning room B")
+    print("vaccum cleaner moving to room A")
+    vaccumpos = "A"
+    A.suck()
+    print("cleaning room A")
+    print("All rooms cleaned")
+    sys.exit()
 
 
-'''
-Is room A dirty? Enter True/False: true
-Is room B dirty? Enter True/False: true
-Is vaccum cleaner present in room A or B :A
-vaccum cleaner present in room  A
-cleaning room A
-vaccum cleaner moving to room B
-cleaning room B
-Both rooms cleaned
-Total cost =  3
-'''
+if not A.dirty and not B.dirty and vaccumpos == "B" :
+        print("Both rooms are already clean")
+        sys.exit()
+if not A.dirty and not B.dirty and vaccumpos == "A":
+        print("Both rooms are already clean")
+        sys.exit()
+        
+if  A.dirty and not B.dirty and vaccumpos == "A" :
+    A.suck()
+    print("cleaning room A")
+    print("All rooms cleaned")
+    sys.exit()
+
+if  A.dirty and not B.dirty and vaccumpos == "B" :
+    vaccumpos = "A"
+    A.suck()
+    print("cleaning room A")
+    print("All rooms cleaned")
+    sys.exit()
+    
+if  not A.dirty and  B.dirty and vaccumpos == "B" :
+    B.suck()
+    print("cleaning room B")
+    print("All rooms cleaned")
+    sys.exit()
+
+if  not A.dirty and  B.dirty and vaccumpos == "A" :
+    vaccumpos = "B"
+    B.suck()
+    print("cleaning room B")
+    print("All rooms cleaned")
+    sys.exit()
+    
