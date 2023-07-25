@@ -10,7 +10,6 @@ B = room()
 A.dirty = input("Is room A dirty? Enter True/False: ").lower()=="true"
 B.dirty = input("Is room B dirty? Enter True/False: ").lower()=="true"
 vaccumpos= input("Is vaccum cleaner present in room A or B :")
-
 if  A.dirty and  B.dirty and vaccumpos == "A":
     A.suck()
     print("cleaning room A")
@@ -64,4 +63,5 @@ if  not A.dirty and  B.dirty and vaccumpos == "A" :
     print("cleaning room B")
     print("All rooms cleaned")
     sys.exit()
+    
     
