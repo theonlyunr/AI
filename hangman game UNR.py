@@ -1,6 +1,7 @@
 def hangman_game():
 
     name = input("What is your name? ")
+    word = input("Enter the word for your friend :")
     print("Hello,"+name, "Hangman time")
     print("Start guessing ...")
 
@@ -8,8 +9,10 @@ def hangman_game():
     turns = 10
     failed = 0
     guesses = ""
-    word = "secret"      #word to be guessed
+    #word = "secret"      #word to be guessed
     while turns > 0:     #keep game running using loops
+        if guesses == word:
+          break
         for char in word:
             if char in guesses:
                print(char)
@@ -19,7 +22,7 @@ def hangman_game():
         if failed == 0:
            print("You win!")
            break
-        guess = input("Guess a charactor")
+        guess = input("Guess a charactor : ")
         guesses += guess
         if guess not in word:
            turns -= 1
