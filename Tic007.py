@@ -26,7 +26,7 @@ while not game_over:
      if Turn % 2 == 0:
      #Player 1
         row = int(input("Player 1: Choose row number (0-2): "))
-        col = int(input("Player 1: Choose row number (0-2): "))
+        col = int(input("Player 1: Choose column number (0-2): "))
         if is_valid_mark(row,col):
            mark(row,col,1)
         else:
@@ -34,7 +34,7 @@ while not game_over:
      else:
      #Player 2
         row = int(input("Player 2: Choose row number (0-2): "))
-        col = int(input("Player 2: Choose row number (0-2): "))
+        col = int(input("Player 2: Choose column number (0-2): "))
         if is_valid_mark(row,col):
            mark(row,col,1)
         else:
