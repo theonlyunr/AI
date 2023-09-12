@@ -1,0 +1,40 @@
+def lowest_cost_first_search(graph, start, goal):
+    open_list = [(start, 0)]
+    closed_list = set()
+    while open_list:
+        open_list.sort(key=lambda x: x[1])
+        current_node, current_cost = open_list.pop(0)
+
+        if current_node == goal:
+            return current_cost
+
+        if current_node not in closed_list:
+            closed_list.add(current_node)
+
+            if current_node in graph:
+                for neighbor, neighbor_cost in graph[current_node]:
+                    if neighbor not in closed_list:
+                        open_list.append((neighbor, current_cost + neighbor_cost))
+    return None
+def input_graph():
+    graph = {}
+    num_edges = int(input("Enter the number of edges: "))
+    for _ in range(num_edges):
+        node = input("Enter a node: ")
+        neighbors_input = input("Enter its neighbors and their costs (e.g., B 5 C 1): ")
+        neighbors = neighbors_input.split()
+        neighbors = [(neighbors[i], int(neighbors[i + 1])) for i in range(0, len(neighbors), 2)]
+        graph[node] = neighbors
+    return graph
+def input_start_and_goal():
+    start_node = input("Enter the start node: ")
+    goal_node = input("Enter the goal node: ")
+    return start_node, goal_node
+if __name__ == "__main__":
+    user_graph = input_graph()
+    start, goal = input_start_and_goal()
+    result = lowest_cost_first_search(user_graph, start, goal)
+    if result is not None:
+        print(f"Lowest cost from {start} to {goal} is {result}")
+    else:
+        print(f"No path found from {start} to {goal}")
