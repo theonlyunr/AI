@@ -52,3 +52,74 @@ while True:
         move = minimax('O')    
     make_move(current_player, move)
     current_player = 'X' if current_player == 'O' else 'O'
+------------------------------------------------------------------------------------------
+`````
+OUTPUT:
+  |   |  
+---------
+  |   |  
+---------
+  |   |  
+Player X, enter your move (0-8): 2
+  |   | X
+---------
+  |   |  
+---------
+  |   |  
+O |   | X
+---------
+  |   |  
+---------
+  |   |  
+Player X, enter your move (0-8): 4
+O |   | X
+---------
+  | X |  
+---------
+  |   |  
+O |   | X
+---------
+  | X |  
+---------
+O |   |  
+Player X, enter your move (0-8): 4
+O |   | X
+---------
+  | X |  
+---------
+O |   |  
+O | O | X
+---------
+  | X |  
+---------
+O |   |  
+Player X, enter your move (0-8): 3
+O | O | X
+---------
+X | X |  
+---------
+O |   |  
+O | O | X
+---------
+X | X | O
+---------
+O |   |  
+Player X, enter your move (0-8): 1
+O | O | X
+---------
+X | X | O
+---------
+O |   |  
+O | O | X
+---------
+X | X | O
+---------
+O | O |  
+Player X, enter your move (0-8): 8
+O | O | X
+---------
+X | X | O
+---------
+O | O | X
+It's a draw!
+```
