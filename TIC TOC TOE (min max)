@@ -1,0 +1,54 @@
+board = [' '] * 9
+def print_board():
+    for i in range(0, 9, 3):
+        print(*board[i:i+3], sep=' | ')
+        if i < 6:
+            print('-' * 9)
+def check_game_status():
+    for a, b, c in [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]:
+        if board[a] == board[b] == board[c] != ' ':
+            return board[a]
+    if ' ' not in board:
+        return 'draw'
+    return None
+def make_move(player, move):
+    if 0 <= move < 9 and board[move] == ' ':
+        board[move] = player
+def minimax(player):
+    scores = {
+        'X': -1,
+        'O': 1,
+        'draw': 0
+    }
+    if (winner := check_game_status()):
+        return scores.get(winner, 0)
+    best_score = float('-inf') if player == 'O' else float('inf')
+    best_move = None
+    for move in [i for i, v in enumerate(board) if v == ' ']:
+        board[move] = player
+        score = minimax('X' if player == 'O' else 'O')
+        board[move] = ' '       
+        if player == 'O':
+            if score > best_score:
+                best_score = score
+                best_move = move
+        else:
+            if score < best_score:
+                best_score = score
+                best_move = move
+    return best_move if player == 'O' else best_score
+current_player = 'X'
+while True:
+    print_board()    
+    if (result := check_game_status()):
+        if result == 'draw':
+            print("It's a draw!")
+        else:
+            print(f"{result} wins!")
+        break    
+    if current_player == 'X':
+        move = int(input(f"Player {current_player}, enter your move (0-8): "))
+    else:
+        move = minimax('O')    
+    make_move(current_player, move)
+    current_player = 'X' if current_player == 'O' else 'O'
