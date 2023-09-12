@@ -21,7 +21,7 @@ def input_graph():
     num_edges = int(input("Enter the number of edges: "))
     for _ in range(num_edges):
         node = input("Enter a node: ")
-        neighbors_input = input("Enter its neighbors and their costs (e.g., B 5 C 1): ")
+        neighbors_input = input("Enter its neighbors and their costs): ")
         neighbors = neighbors_input.split()
         neighbors = [(neighbors[i], int(neighbors[i + 1])) for i in range(0, len(neighbors), 2)]
         graph[node] = neighbors
